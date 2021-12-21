@@ -79,7 +79,7 @@ export class InputPlayerComponent implements OnInit {
   updateBrawlerList(): void {
     if (this.ui_brawler != '') {
       this.brawler_names_autocompletion = this.brawler_names.filter( (b) => {
-        return b.toUpperCase().includes(this.ui_brawler.toUpperCase());
+        return b != null && b.toUpperCase().includes(this.ui_brawler.toUpperCase());
       });
     } else {
       this.brawler_names_autocompletion = this.brawler_names;

@@ -17,6 +17,7 @@ export class LandingPageComponent implements OnInit {
   mapList?: ModelMap[];
 
   players: Player[];
+  selectedMap?: ModelMap;
 
   constructor(private brawlerS: BrawlerService, private mapS: MapService) {
     this.downloadBrawlerList();
@@ -41,7 +42,7 @@ export class LandingPageComponent implements OnInit {
   downloadMapList() {
     this.mapS.getAllMaps().subscribe({
       next: resp => {
-        this.mapList = resp.list;
+        this.mapList = resp.list.filter(m => !m.disabled && m.name !== 'Unknown');
       },
       error: err => {
         this.handleError(err, "downloading map list");
@@ -60,6 +61,10 @@ export class LandingPageComponent implements OnInit {
 
   updatePlayers(players: Player[]) {
     this.players = players;
+  }
+
+  updateMap(map: any) {
+    this.selectedMap = map as ModelMap;
   }
 
 }

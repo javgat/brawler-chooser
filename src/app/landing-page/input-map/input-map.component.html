@@ -1,1 +1,18 @@
-<p>input-map works!</p>
+<mat-card>
+    <mat-card-title>Map</mat-card-title>
+    <mat-card-content>
+        <form>
+            <mat-form-field appearance="fill">
+                <mat-label></mat-label>
+                <input type="text" matInput name="map_input"
+                    placeholder="Map..." [(ngModel)]="ui_map" value="{{ui_map}}"
+                    (input)="changeInputMap()" (click)="updateMapList()" [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="changeInputMap()">
+                    <mat-option *ngFor="let m of map_names_autocompletion" [value]="m">
+                        {{m}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </form>
+    </mat-card-content>
+</mat-card>
