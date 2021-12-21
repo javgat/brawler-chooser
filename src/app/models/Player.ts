@@ -21,6 +21,10 @@ export class Player {
         return this.best_brawlers.some(br => br.id === b.id);
     }
 
+    hasBrawlerName(name: string): boolean {
+        return this.best_brawlers.some(br => br.name === name);
+    }
+
     addBrawler(b: Brawler) {
         if (!this.hasBrawler(b)) {
             this.best_brawlers.push(b);

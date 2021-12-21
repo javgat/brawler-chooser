@@ -12,7 +12,15 @@ import { InputPlayerComponent } from './landing-page/input-player-wrapper/input-
 import { InputMapComponent } from './landing-page/input-map/input-map.component';
 import { OutputTeamWrapperComponent } from './landing-page/output-team-wrapper/output-team-wrapper.component';
 import { OutputIndivWrapperComponent } from './landing-page/output-indiv-wrapper/output-indiv-wrapper.component';
+import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatInputModule } from '@angular/material/input';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 export function apiConfigFactory (): Configuration {
   const params: ConfigurationParameters = {
@@ -33,11 +41,19 @@ export function apiConfigFactory (): Configuration {
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
     ApiModule.forRoot(apiConfigFactory),
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatDividerModule,
+    MatInputModule,
+    MatChipsModule,
+    MatIconModule,
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]
