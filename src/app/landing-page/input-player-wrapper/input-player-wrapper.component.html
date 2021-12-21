@@ -1,0 +1,4 @@
+<div *ngFor="let player of players">
+    <app-input-player [player]="player" [brawlers]="brawlers" [brawler_names]="getBrawlerNames()"></app-input-player>
+</div>
+<button *ngIf="players.length < max_number_players" mat-raised-button color="primary" (click)="clickAddPlayer()">Add Player</button>

@@ -1,0 +1,3 @@
+<div *ngIf="brawlerList != undefined">
+    <app-input-player-wrapper [brawlers]="brawlerList" (playersUpdate)="updatePlayers($event)"></app-input-player-wrapper>
+</div>
