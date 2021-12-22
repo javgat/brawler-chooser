@@ -21,6 +21,7 @@ export class LandingPageComponent implements OnInit {
   selectedMap?: ModelMap;
 
   calculatedTeamStats?: TeamStat[];
+  calculatedSoloStats?:  Map<Player, Stat>;
 
   constructor(private brawlerS: BrawlerService, private mapS: MapService) {
     this.downloadBrawlerList();
@@ -143,7 +144,7 @@ export class LandingPageComponent implements OnInit {
   }
 
   private calculateFromStats(stats: Stat[]) {
-    console.log(this.getBestIndivComp(stats, this.players));
+    this.calculatedSoloStats = this.getBestIndivComp(stats, this.players);
   }
 
   private getBestIndivComp(stats: Stat[], players: Player[]): Map<Player, Stat> {

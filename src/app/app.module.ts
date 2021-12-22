@@ -21,7 +21,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatTableModule } from '@angular/material/table'
+import { MatTableModule } from '@angular/material/table';
+import { MatListModule } from '@angular/material/list';
 
 export function apiConfigFactory (): Configuration {
   const params: ConfigurationParameters = {
@@ -55,7 +56,8 @@ export function apiConfigFactory (): Configuration {
     MatChipsModule,
     MatIconModule,
     MatAutocompleteModule,
-    MatTableModule
+    MatTableModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -16,3 +16,6 @@
 <div *ngIf="calculatedTeamStats != undefined">
     <app-output-team-wrapper [teamStats]="calculatedTeamStats"></app-output-team-wrapper>
 </div>
+<div *ngIf="calculatedSoloStats != undefined">
+    <app-output-indiv-wrapper [stats]="calculatedSoloStats" [players]="players"></app-output-indiv-wrapper>
+</div>

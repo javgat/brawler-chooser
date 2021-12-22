@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Stat } from '@javgat/brawlify-api-client-angular';
+import { Player } from 'src/app/models/Player';
 
 @Component({
   selector: 'app-output-indiv-wrapper',
@@ -7,9 +9,43 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OutputIndivWrapperComponent implements OnInit {
 
-  constructor() { }
+  displayedColumns: string[] = ['player', 'brawler', 'winRate', 'useRate'];
+
+  @Input() stats?:  Map<Player, Stat>;
+  @Input() players:  Player[];
+
+  constructor() {
+    this.players = [];
+  }
 
   ngOnInit(): void {
+  }
+
+  getBrawlerName(player: Player): string {
+    let b_id = this.stats?.get(player)?.brawler;
+    let filtered = player.best_brawlers.filter(b => b.id == b_id);
+    if (filtered.length > 0) {
+      return filtered[0].name;
+    }
+    return "No combination found";
+  }
+
+  getWinRate(player: Player): string {
+    let stat = this.stats?.get(player);;
+    if (stat) {
+      let winRate = stat.winRate;
+      return Number(winRate).toString();
+    }
+    return "0";
+  }
+
+  getUseRate(player: Player): string {
+    let stat = this.stats?.get(player);
+    if (stat) {
+      let useRate = stat.useRate;
+      return Number(useRate).toString();
+    }
+    return "0";
   }
 
 }

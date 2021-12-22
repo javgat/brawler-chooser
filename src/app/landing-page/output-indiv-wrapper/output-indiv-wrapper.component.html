@@ -1,1 +1,31 @@
-<p>output-indiv-wrapper works!</p>
+<mat-card>
+    <mat-card-title>Best Solo Combination</mat-card-title>
+    <mat-card-subtitle>Based on individual Win Rate</mat-card-subtitle>
+    <mat-card-content>
+        <div *ngIf="stats != undefined">
+            <table mat-table [dataSource]="players">
+                <ng-container matColumnDef="player">
+                    <th mat-header-cell *matHeaderCellDef> Player </th>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="brawler">
+                    <th mat-header-cell *matHeaderCellDef> Brawler </th>
+                    <td mat-cell *matCellDef="let element"> {{getBrawlerName(element)}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="winRate">
+                    <th mat-header-cell *matHeaderCellDef> WinRate </th>
+                    <td mat-cell *matCellDef="let element"> {{getWinRate(element)}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="useRate">
+                    <th mat-header-cell *matHeaderCellDef> UseRate </th>
+                    <td mat-cell *matCellDef="let element"> {{getUseRate(element)}} </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+    </mat-card-content>
+</mat-card>
