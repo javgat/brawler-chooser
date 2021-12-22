@@ -2,6 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Stat } from '@javgat/brawlify-api-client-angular';
 import { Player } from 'src/app/models/Player';
 
+/**
+ * This component will output the information of the best team compositions based on solo win rates
+ */
+
 @Component({
   selector: 'app-output-indiv-wrapper',
   templateUrl: './output-indiv-wrapper.component.html',

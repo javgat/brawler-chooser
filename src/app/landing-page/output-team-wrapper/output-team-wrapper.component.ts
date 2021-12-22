@@ -1,6 +1,10 @@
 import { Component, Input, OnInit, SimpleChange } from '@angular/core';
 import { TeamStat } from '@javgat/brawlify-api-client-angular';
 
+/**
+ * This component will output the information of the best team compositions available to the user
+ */
+
 @Component({
   selector: 'app-output-team-wrapper',
   templateUrl: './output-team-wrapper.component.html',

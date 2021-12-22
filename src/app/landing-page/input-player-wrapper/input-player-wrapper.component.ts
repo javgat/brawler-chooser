@@ -3,6 +3,10 @@ import { Brawler } from '@javgat/brawlify-api-client-angular';
 import { Player } from 'src/app/models/Player';
 import { MAX_NUMBER_PLAYERS } from 'src/app/shared/constants';
 
+/**
+ * This component wraps the user interface for the Players data.
+ */
+
 @Component({
   selector: 'app-input-player-wrapper',
   templateUrl: './input-player-wrapper.component.html',
