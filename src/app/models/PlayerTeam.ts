@@ -56,15 +56,19 @@ export class PlayerTeam {
         let playerFit: boolean = false;
         if (players.length > iterPlayerNumber) {
             let iPlayer = players[iterPlayerNumber];
+            let forbiddenForPlayer: Set<number> = new Set();
             for (let i = 0; i < stats.length; i++) {
                 let iStat = stats[i];
                 if (!Array.from(comp.values()).includes(iStat)) {
-                    if (iPlayer.hasBrawlerId(iStat.brawler)) {
-                        comp.set(iPlayer, iStat); // Try adding the player and the stat
-                        playerFit = this.recGetBestIndivComp(players, iterPlayerNumber + 1, stats, comp);
-                        if (!playerFit) {
-                            comp.delete(iPlayer);
-                            i = -1; // Start checking the stats from the begining
+                    if (!forbiddenForPlayer.has(i)) {
+                        if (iPlayer.hasBrawlerId(iStat.brawler)) {
+                            comp.set(iPlayer, iStat); // Try adding the player and the stat
+                            playerFit = this.recGetBestIndivComp(players, iterPlayerNumber + 1, stats, comp);
+                            if (!playerFit) {
+                                comp.delete(iPlayer);
+                                forbiddenForPlayer.add(i);
+                                i = -1; // Start checking the stats from the begining
+                            }
                         }
                     }
                 }
