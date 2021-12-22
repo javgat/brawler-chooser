@@ -12,6 +12,7 @@ import { InputPlayerComponent } from './landing-page/input-player-wrapper/input-
 import { InputMapComponent } from './landing-page/input-map/input-map.component';
 import { OutputTeamWrapperComponent } from './landing-page/output-team-wrapper/output-team-wrapper.component';
 import { OutputIndivWrapperComponent } from './landing-page/output-indiv-wrapper/output-indiv-wrapper.component';
+import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -23,7 +24,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTableModule } from '@angular/material/table';
 import { MatListModule } from '@angular/material/list';
-import { FooterComponent } from './footer/footer.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 
 export function apiConfigFactory (): Configuration {
   const params: ConfigurationParameters = {
@@ -59,7 +61,9 @@ export function apiConfigFactory (): Configuration {
     MatIconModule,
     MatAutocompleteModule,
     MatTableModule,
-    MatListModule
+    MatListModule,
+    MatSnackBarModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

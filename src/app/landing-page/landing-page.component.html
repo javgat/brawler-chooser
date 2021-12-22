@@ -9,17 +9,21 @@
     </div>
     <mat-card>
         <mat-card-title>Calculate combinations</mat-card-title>
+        <mat-card-subtitle>Select the trophy range</mat-card-subtitle>
         <mat-card-actions>
-            <button mat-raised-button color="primary" (click)="calculateComp()"
+            <button mat-raised-button class="calculate-button" color="primary" (click)="calculateComp()"
                 [disabled]="isCompCalculationDisabled()">All Ranges</button>
-            <button mat-raised-button color="primary" (click)="calculateCompRanged('0-299')"
+            <button mat-raised-button class="calculate-button" color="primary" (click)="calculateCompRanged('0-299')"
                 [disabled]="isCompCalculationDisabled()">0-299</button>
-            <button mat-raised-button color="primary" (click)="calculateCompRanged('300-599')"
+            <button mat-raised-button class="calculate-button" color="primary" (click)="calculateCompRanged('300-599')"
                 [disabled]="isCompCalculationDisabled()">300-599</button>
-            <button mat-raised-button color="primary" (click)="calculateCompRanged('600+')"
+            <button mat-raised-button class="calculate-button" color="primary" (click)="calculateCompRanged('600+')"
                 [disabled]="isCompCalculationDisabled()">600+</button>
         </mat-card-actions>
     </mat-card>
+    <div id="spinner-wrapper" *ngIf="loadingCalculation">
+        <mat-spinner [diameter]="30"></mat-spinner>
+    </div>
     <div *ngIf="calculatedTeamStats != undefined">
         <app-output-team-wrapper [teamStats]="calculatedTeamStats"></app-output-team-wrapper>
     </div>
