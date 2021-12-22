@@ -1,21 +1,30 @@
-<div *ngIf="brawlerList != undefined">
-    <app-input-player-wrapper [brawlers]="brawlerList" (playersUpdate)="updatePlayers($event)"></app-input-player-wrapper>
-</div>
-<div *ngIf="mapList != undefined">
-    <app-input-map [maps]="mapList" (newMapSelected)="updateMap($event)"></app-input-map>
-</div>
-<mat-card>
-    <mat-card-title>Calculate combinations</mat-card-title>
-    <mat-card-actions>
-        <button mat-raised-button color="primary" (click)="calculateComp()" [disabled]="isCompCalculationDisabled()">All Ranges</button>
-        <button mat-raised-button color="primary" (click)="calculateCompRanged('0-299')" [disabled]="isCompCalculationDisabled()">0-299</button>
-        <button mat-raised-button color="primary" (click)="calculateCompRanged('300-599')" [disabled]="isCompCalculationDisabled()">300-599</button>
-        <button mat-raised-button color="primary" (click)="calculateCompRanged('600+')" [disabled]="isCompCalculationDisabled()">600+</button>
-    </mat-card-actions>
-</mat-card>
-<div *ngIf="calculatedTeamStats != undefined">
-    <app-output-team-wrapper [teamStats]="calculatedTeamStats"></app-output-team-wrapper>
-</div>
-<div *ngIf="calculatedSoloStats != undefined">
-    <app-output-indiv-wrapper [stats]="calculatedSoloStats" [players]="players"></app-output-indiv-wrapper>
+<div id="landing_page_container">
+    <h1>Brawler Selector</h1>
+    <div *ngIf="brawlerList != undefined">
+        <app-input-player-wrapper [brawlers]="brawlerList" (playersUpdate)="updatePlayers($event)">
+        </app-input-player-wrapper>
+    </div>
+    <div *ngIf="mapList != undefined">
+        <app-input-map [maps]="mapList" (newMapSelected)="updateMap($event)"></app-input-map>
+    </div>
+    <mat-card>
+        <mat-card-title>Calculate combinations</mat-card-title>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" (click)="calculateComp()"
+                [disabled]="isCompCalculationDisabled()">All Ranges</button>
+            <button mat-raised-button color="primary" (click)="calculateCompRanged('0-299')"
+                [disabled]="isCompCalculationDisabled()">0-299</button>
+            <button mat-raised-button color="primary" (click)="calculateCompRanged('300-599')"
+                [disabled]="isCompCalculationDisabled()">300-599</button>
+            <button mat-raised-button color="primary" (click)="calculateCompRanged('600+')"
+                [disabled]="isCompCalculationDisabled()">600+</button>
+        </mat-card-actions>
+    </mat-card>
+    <div *ngIf="calculatedTeamStats != undefined">
+        <app-output-team-wrapper [teamStats]="calculatedTeamStats"></app-output-team-wrapper>
+    </div>
+    <div *ngIf="calculatedSoloStats != undefined">
+        <app-output-indiv-wrapper [stats]="calculatedSoloStats" [players]="players"></app-output-indiv-wrapper>
+    </div>
+    <app-footer></app-footer>
 </div>

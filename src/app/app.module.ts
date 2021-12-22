@@ -23,6 +23,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTableModule } from '@angular/material/table';
 import { MatListModule } from '@angular/material/list';
+import { FooterComponent } from './footer/footer.component';
 
 export function apiConfigFactory (): Configuration {
   const params: ConfigurationParameters = {
@@ -39,7 +40,8 @@ export function apiConfigFactory (): Configuration {
     InputPlayerComponent,
     InputMapComponent,
     OutputTeamWrapperComponent,
-    OutputIndivWrapperComponent
+    OutputIndivWrapperComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

@@ -3,7 +3,7 @@
     <mat-card-content>
         <form>
             <mat-form-field appearance="fill">
-                <mat-label></mat-label>
+                <mat-label>Map name</mat-label>
                 <input type="text" matInput name="map_input"
                     placeholder="Map..." [(ngModel)]="ui_map" value="{{ui_map}}"
                     (input)="changeInputMap()" (click)="updateMapList()" [matAutocomplete]="auto">
