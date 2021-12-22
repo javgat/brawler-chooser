@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Brawler, BrawlerService, MapService, ModelMap, Stat, TeamStat } from '@javgat/brawlify-api-client-angular';
 import { Player } from '../models/Player';
 import { PlayerTeam } from '../models/PlayerTeam';
@@ -23,10 +24,13 @@ export class LandingPageComponent implements OnInit {
   calculatedTeamStats?: TeamStat[];
   calculatedSoloStats?:  Map<Player, Stat>;
 
-  constructor(private brawlerS: BrawlerService, private mapS: MapService) {
+  loadingCalculation: boolean;
+
+  constructor(private brawlerS: BrawlerService, private mapS: MapService, private _snackBar: MatSnackBar) {
     this.downloadBrawlerList();
     this.downloadMapList();
     this.players = [];
+    this.loadingCalculation = false;
   }
 
   ngOnInit(): void {
@@ -75,7 +79,9 @@ export class LandingPageComponent implements OnInit {
       output = output + " " + err.status;
     }
     output = output + ": " + message;
+    output = output + ". Please try again."
     console.log(output);
+    this._snackBar.open(output, "Ok");
   }
 
   updatePlayers(players: Player[]) {
@@ -94,6 +100,7 @@ export class LandingPageComponent implements OnInit {
     if (this.selectedMap) {
       let name: string = this.selectedMap.name;
       let id: number = this.selectedMap.id;
+      this.loadingCalculation = true;
       this.mapS.getMap(this.selectedMap.id).subscribe({
         next: resp => {
           let map: ModelMap = resp;
@@ -103,9 +110,11 @@ export class LandingPageComponent implements OnInit {
           if (map.stats) {
             this.calculateFromStats(map.stats);
           }
+          this.loadingCalculation = false;
         },
         error: err => {
           this.handleError(err, "downloading map "+name+" (ID: "+id+")" );
+          this.loadingCalculation = false;
         }
       });
     }
@@ -115,6 +124,7 @@ export class LandingPageComponent implements OnInit {
     if (this.selectedMap) {
       let name: string = this.selectedMap.name;
       let id: number = this.selectedMap.id;
+      this.loadingCalculation = true;
       this.mapS.getMapWithTrophyRange(this.selectedMap.id, range).subscribe({
         next: resp => {
           let map: ModelMap = resp;
@@ -124,9 +134,11 @@ export class LandingPageComponent implements OnInit {
           if (map.stats) {
             this.calculateFromStats(map.stats);
           }
+          this.loadingCalculation = false;
         },
         error: err => {
           this.handleError(err, "downloading map "+name+" (ID: "+id+")" );
+          this.loadingCalculation = false;
         }
       });
     }

@@ -1,6 +1,6 @@
 # brawler-selector
 
-![Version 0.1.0](https://img.shields.io/badge/version-0.1.0-informational) ![License: MIT](https://img.shields.io/badge/license-MIT-green)
+![Version 0.1.1](https://img.shields.io/badge/version-0.1.1-informational) ![License: MIT](https://img.shields.io/badge/license-MIT-green)
 
 Web app for the automatic brawler selection of brawlers for a team of players of brawl stars.
 
