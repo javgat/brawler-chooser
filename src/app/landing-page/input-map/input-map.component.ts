@@ -50,9 +50,7 @@ export class InputMapComponent implements OnInit {
   changeInputMap(): void {
     this.updateMapList();
     let mapsFiltered: ModelMap[] = this.maps.filter(m => m.name == this.ui_map);
-    console.log(mapsFiltered);
-    console.log(this.ui_map);
-    if (mapsFiltered.length == 1) {
+    if (mapsFiltered.length >= 1) {
       let map: ModelMap = mapsFiltered[0];
       this.sendMapSelection(map);
     }
